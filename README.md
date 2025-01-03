@@ -9,6 +9,7 @@ ExpenseTracker is a web application designed to help users manage their personal
 - [Setting Up the Database](#setting-up-the-database)
 - [Steps to Run the Application](#steps-to-run-the-application)
 - [Dependencies](#dependencies)
+- [UnitTestCases](#unittestcases)
 - [Swagger Documentation](#swagger-documentation)
 - [UI Images](#attaching-images-in-the-ui)
 - [Contributing](#contributing)
@@ -20,7 +21,7 @@ ExpenseTracker is a web application designed to help users manage their personal
 
 - **Expense Management**: Add, edit, or delete expense entries.
 - **Expense Categorization**: Categorize expenses (e.g., Food, Travel, Utilities, Entertainment).
-- **Summary View**: Display a categorized summary of expenses with total amounts.
+- **Summary View**: Display a categorized summary of expenses with total amounts and percentage.
 - **Search Functionality**: Perform full-text or semantic searches across expenses.
 - **Data Visualization**: Generate visual insights using pie charts and bar charts for expense summaries.
 - **Additional Features**: Support for enhanced user experience through customizable options and extended data filters.
@@ -90,6 +91,12 @@ To install the packages, run:
 # Example
  dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 ```
+
+---
+
+## UnitTestCases
+### XUnit TestCases
+- Test cases have been written using XUnit for API Controllers. 
 
 ---
 
