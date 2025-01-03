@@ -12,6 +12,8 @@ builder.Services.AddDbContext<ExpenseTrackerContext>(options =>
 // builder.Services.AddScoped<IExpenseService, ExpenseService>();
 //builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

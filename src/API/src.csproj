@@ -20,10 +20,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Models\Response" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Compile Remove="Services\ExpenseService.cs" />
       <Compile Remove="Services\IExpenseService.cs" />
       <Compile Remove="Controllers\ExpenseController.cs" />
