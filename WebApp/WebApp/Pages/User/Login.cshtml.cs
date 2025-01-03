@@ -30,22 +30,36 @@ public class LoginModel : PageModel
             Password = Password
         };
 
-        // Define the endpoint for validating the user credentials (update with actual API URL)
-        var apiEndpoint = "https://third-party-api.com/validate-login";
+        // Define the endpoint for validating the user credentials
+        var apiEndpoint = "http://localhost:5138/api/Auth/signin";
 
         try
         {
             // Call the third-party API to validate the credentials
-            //var response = await _apiService.PostAsync<object, object>(apiEndpoint, loginRequest);
+            var response = await _apiService.PostAsync<object, LoginResponse>(apiEndpoint, loginRequest);
 
-            // If the API responds successfully, redirect the user
-            return RedirectToPage("/Expenses/ExpenseList"); // Or another page as needed
+            if (response.UserId > 0)
+            {
+                // If successful, redirect the user
+                return RedirectToPage("/Expenses/ExpenseList");
+            }
+            else
+            {
+                // Handle other cases (e.g., invalid credentials)
+                ErrorMessage = "Invalid username or password.";
+            }
         }
-        catch
+        catch (Exception ex)
         {
-            // Handle any errors (e.g., network issues or invalid credentials)
-            ErrorMessage = "Invalid username or password, or there was an issue connecting to the authentication service.";
-            return Page();
+            // Handle unexpected errors
+            ErrorMessage = $"An error occurred: {ex.Message}";
         }
+
+        return Page();
+    }
+
+    public class LoginResponse
+    {
+        public int UserId { get; set; }
     }
 }
