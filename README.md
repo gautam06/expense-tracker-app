@@ -20,7 +20,7 @@ ExpenseTracker is a web application designed to help users manage their personal
 
 - **Expense Management**: Add, edit, or delete expense entries.
 - **Expense Categorization**: Categorize expenses (e.g., Food, Travel, Utilities, Entertainment).
-- **Summary View**: Display a categorized summary of expenses with total amounts.
+- **Summary View**: Display a categorized summary of expenses with total amounts and percentage.
 - **Search Functionality**: Perform full-text or semantic searches across expenses.
 - **Data Visualization**: Generate visual insights using pie charts and bar charts for expense summaries.
 - **Additional Features**: Support for enhanced user experience through customizable options and extended data filters.
