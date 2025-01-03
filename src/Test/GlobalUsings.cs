@@ -1,0 +1,9 @@
+global using Xunit;
+global using Moq;
+global using Microsoft.AspNetCore.Mvc;
+global using ExpenseTrackerAPI.Controllers;
+global using ExpenseTrackerAPI.Services;
+global using ExpenseTrackerAPI.Models.Request;
+global using ExpenseTrackerAPI.Entities;
+global using ExpenseTrackerAPI.Dtos;
+global using ExpenseTrackerAPI.Models.Response;
