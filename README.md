@@ -21,9 +21,8 @@ ExpenseTracker is a web application designed to help users manage their personal
 
 - **Expense Management**: Add, edit, or delete expense entries.
 - **Expense Categorization**: Categorize expenses (e.g., Food, Travel, Utilities, Entertainment).
-- **Summary View**: Display a categorized summary of expenses with total amounts and percentage.
+- **Summary View**: Display a categorized summary of expenses with total amounts and percentages.
 - **Search Functionality**: Perform full-text or semantic searches across expenses.
-- **Data Visualization**: Generate visual insights using pie charts and bar charts for expense summaries.
 - **Additional Features**: Support for enhanced user experience through customizable options and extended data filters.
 
 ---
@@ -40,7 +39,7 @@ Before setting up the ExpenseTracker application, ensure the following tools are
 
 ## Setting Up the Database
    
-1. We have hosted MS SQL Server Database Instance on a local machine and it can be accessed using the below connection string.
+1. **Database Connectivity:** We have hosted MS SQL Server Database Instance on a local machine and it can be accessed using the below connection string.
 2. **Update Connection String**:
    - Edit the `appsettings.json` file:
      ```json
@@ -77,8 +76,6 @@ Before setting up the ExpenseTracker application, ensure the following tools are
 - `Microsoft.EntityFrameworkCore.SqlServer`: Database connectivity.
 - `Microsoft.EntityFrameworkCore.Tools`: Database migrations.
 - `Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore`: Error diagnostics.
-- `Newtonsoft.Json`: JSON handling.
-- `LiveCharts`: For rendering visualizations.
 
 To install the packages, run:
 ```bash
@@ -90,7 +87,7 @@ To install the packages, run:
 
 ## UnitTestCases
 ### XUnit TestCases
-- Test cases have been written using XUnit for API Controllers. 
+- Test cases have been written using XUnit for API Controllers and Application Service Classes. 
 
 ---
 
@@ -113,11 +110,11 @@ This application provides Swagger UI for exploring the API endpoints:
 
 Refer attached images of UI for reference.
 
-![Expense Tracker Screenshot1](https://github.com/gautam06/expense-tracker-app/blob/main/WebApp/WebApp/wwwroot/ScreenShot/CategoryAPI.png)
-![Expense Tracker Screenshot2](https://github.com/gautam06/expense-tracker-app/blob/main/WebApp/WebApp/wwwroot/ScreenShot/Form.png)
-![Expense Tracker Screenshot3](https://github.com/gautam06/expense-tracker-app/blob/main/WebApp/WebApp/wwwroot/ScreenShot/List.png)
 ![Expense Tracker Screenshot4](https://github.com/gautam06/expense-tracker-app/blob/main/WebApp/WebApp/wwwroot/ScreenShot/Login.png)
 ![Expense Tracker Screenshot5](https://github.com/gautam06/expense-tracker-app/blob/main/WebApp/WebApp/wwwroot/ScreenShot/SigninAPI.png)
+![Expense Tracker Screenshot2](https://github.com/gautam06/expense-tracker-app/blob/main/WebApp/WebApp/wwwroot/ScreenShot/Form.png)
+![Expense Tracker Screenshot3](https://github.com/gautam06/expense-tracker-app/blob/main/WebApp/WebApp/wwwroot/ScreenShot/ExpenseList.png)
+![Expense Tracker Screenshot1](https://github.com/gautam06/expense-tracker-app/blob/main/WebApp/WebApp/wwwroot/ScreenShot/CategoryAPI.png)
 
 ---
 
