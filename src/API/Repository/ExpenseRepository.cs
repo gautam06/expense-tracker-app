@@ -132,8 +132,8 @@ public class ExpenseRepository : IExpenseRepository
         }
 
         // Pagination
-        var skip = ((query.PageNumber ?? 1) - 1) * (query.PageSize ?? 10);
-        expenses = expenses.Skip(skip).Take(query.PageSize ?? 10);
+        var skip = ((query.PageNumber ?? 1) - 1) * (query.PageSize ?? 50);
+        expenses = expenses.Skip(skip).Take(query.PageSize ?? 50);
 
         return await expenses.Select(e => new ExpenseDto
         {
