@@ -1,46 +1,36 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WebApp.Models;
 using WebApp.Services;
 
 namespace WebApp.Pages.Expenses;
 
 public class ExpenseList : PageModel
 {
-    public class ExpensesModel : PageModel
+    private readonly IApiService _apiService;
+
+    public int UserId { get; set; }
+    public List<ExpenseDto> Expenses { get; set; }
+    public List<CategoryDto> Categories { get; set; }
+
+    public ExpenseList(IApiService apiService)
     {
-        private readonly IApiService _apiService; // Use your API service for fetching data
-
-        public List<ExpenseDto> Expenses = new List<ExpenseDto>();
-        public List<CategoryDto> Categories = new List<CategoryDto>();
-
-        public ExpensesModel(IApiService apiService)
-        {
-            _apiService = apiService;
-        }
-
-        // This method is called when the page is loaded
-        public async Task OnGetAsync()
-        {
-            // Fetch list of expenses from API or database
-            //Expenses = await _apiService.GetAsync<List<ExpenseDto>>("api/expenses");
-
-            // Fetch categories from API for the Add Expense modal
-            //Categories = await _apiService.GetAsync<List<CategoryDto>>("api/categories");
-        }
+        _apiService = apiService;
     }
 
-    // Data transfer object for Expense
-    public class ExpenseDto
+    public async Task OnGetAsync(int userId)
     {
-        public int Id { get; set; }
-        public decimal Amount { get; set; }
-        public string CategoryName { get; set; }
-        public string Description { get; set; }
-    }
+        UserId = userId;
+        // Call the API to fetch expenses by user ID
+        var apiEndpoint = $"http://localhost:5138/api/Expenses/ExpensesByCategory/{UserId}";
+        Expenses = await _apiService.GetAsync<List<ExpenseDto>>(apiEndpoint);
+        
+        var categoryApiEndpoint = "http://localhost:5138/api/Category/list";
+        Categories = await _apiService.GetAsync<List<CategoryDto>>(categoryApiEndpoint);
 
-    // Data transfer object for Category
-    public class CategoryDto
+    }
+    public IActionResult OnGet_AddExpense()
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        return Partial("_AddExpense", new ExpenseDto());
     }
 }

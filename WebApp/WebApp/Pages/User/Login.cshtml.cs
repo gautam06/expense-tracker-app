@@ -41,7 +41,7 @@ public class LoginModel : PageModel
             if (response.UserId > 0)
             {
                 // If successful, redirect the user
-                return RedirectToPage("/Expenses/ExpenseList");
+                return RedirectToPage("/Expenses/ExpenseList", new { userId = response.UserId });
             }
             else
             {
