@@ -39,19 +39,13 @@ Before setting up the ExpenseTracker application, ensure the following tools are
 ---
 
 ## Setting Up the Database
-
-1. **Create the Database**:
-   - Open SQL Server Management Studio (SSMS).
-   - Create a database named `ExpenseTracker`.
-
-2. **Run the SQL Script**:
-   - Use the script in `Database/SetupScript.sql` to set up the necessary tables:
-     
-3. **Update Connection String**:
+   
+1. We have hosted MS SQL Server Database Instance on a local machine and it can be accessed using the below connection string.
+2. **Update Connection String**:
    - Edit the `appsettings.json` file:
      ```json
      "ConnectionStrings": {
-       "DefaultConnection": "Server=YOUR_SERVER_NAME;Database=ExpenseTrackerDB;Trusted_Connection=True;"
+       "DefaultConnection": "Server=tcp:192.168.5.112,49175;Database=ExpenseTracker;User ID=sa;Password=sa123;TrustServerCertificate=True;Encrypt=True;"
      }
      ```
 
