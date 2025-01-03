@@ -1,6 +1,6 @@
 ﻿
 
-using ExpenseTrackerAPI.Entities;
+namespace ExpenseTrackerAPI.Entities;
 
 public partial class Category
 {
