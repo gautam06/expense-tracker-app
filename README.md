@@ -9,7 +9,7 @@ ExpenseTracker is a web application designed to help users manage their personal
 - [Setting Up the Database](#setting-up-the-database)
 - [Steps to Run the Application](#steps-to-run-the-application)
 - [Dependencies](#dependencies)
-- [UnitTestCases(#unittestcases)
+- [UnitTestCases](#unittestcases)
 - [Swagger Documentation](#swagger-documentation)
 - [UI Images](#attaching-images-in-the-ui)
 - [Contributing](#contributing)
