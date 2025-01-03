@@ -45,16 +45,7 @@ Before setting up the ExpenseTracker application, ensure the following tools are
 
 2. **Run the SQL Script**:
    - Use the script in `Database/SetupScript.sql` to set up the necessary tables:
-     ```sql
-     CREATE TABLE Expenses (
-         ExpenseId INT PRIMARY KEY IDENTITY(1,1),
-         Description NVARCHAR(255) NOT NULL,
-         Amount DECIMAL(18,2) NOT NULL,
-         Category NVARCHAR(50) NOT NULL,
-         ExpenseDate DATE NOT NULL
-     );
-     ```
-
+     
 3. **Update Connection String**:
    - Edit the `appsettings.json` file:
      ```json
