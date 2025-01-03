@@ -100,13 +100,13 @@ public class ExpenseRepository : IExpenseRepository
         return true;
     }
 	
-	public async Task<IEnumerable<ExpenseDto>> ListAllExpensesAsync(ExpenseQueryModel query, int userId)
+    public async Task<IEnumerable<ExpenseDto>> ListAllExpensesAsync(ExpenseQueryModel query, int userId)
     {
         IQueryable<Expense> expenses = _context.Expenses.Include(e => e.Category).AsQueryable();
 
         // Filter by user
         expenses = expenses.Where(e => e.UserId == userId);
-        
+
         // Search
         if (!string.IsNullOrEmpty(query.Search))
         {
@@ -132,8 +132,8 @@ public class ExpenseRepository : IExpenseRepository
         }
 
         // Pagination
-        var skip = (query.PageNumber - 1) * query.PageSize;
-        expenses = expenses.Skip(skip).Take(query.PageSize);
+        var skip = ((query.PageNumber ?? 1) - 1) * (query.PageSize ?? 10);
+        expenses = expenses.Skip(skip).Take(query.PageSize ?? 10);
 
         return await expenses.Select(e => new ExpenseDto
         {
