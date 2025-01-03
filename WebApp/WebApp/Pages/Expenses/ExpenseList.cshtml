@@ -1,0 +1,143 @@
+@page
+@model ExpenseList.ExpensesModel
+
+@{
+    ViewData["Title"] = "Expenses - ExpenseTracker";
+}
+
+<!-- Container for Expenses Table -->
+<div class="container mt-4">
+    <h2>Expenses List</h2>
+
+    <!-- Add Expense Button -->
+    <button class="btn btn-success mb-3 float-end" data-bs-toggle="modal" data-bs-target="#addExpenseModal">Add Expense</button>
+
+    <!-- DataTable for Expenses -->
+    <table id="expensesTable" class="table table-bordered">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Data will be populated via DataTables JS -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Add Expense Modal -->
+<div class="modal fade" id="addExpenseModal" tabindex="-1" aria-labelledby="addExpenseModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addExpenseModalLabel">Add New Expense</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addExpenseForm">
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Amount</label>
+                        <input type="number" class="form-control" id="amount" name="Amount" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select class="form-select" id="category" name="CategoryId" required>
+                            <!-- Categories will be populated via JavaScript -->
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="Description" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Expense</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script for DataTable and Modal -->
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Fetch expenses
+            $.ajax({
+                url: '/api/expenses', // API to get list of expenses
+                method: 'GET',
+                success: function(data) {
+                    if (data.length > 0) {
+                        // If there are records, initialize DataTable
+                        $('#expensesTable').DataTable({
+                            data: data,
+                            columns: [
+                                { data: 'id' },
+                                { data: 'amount' },
+                                { data: 'categoryName' },
+                                { data: 'description' },
+                                {
+                                    data: null,
+                                    render: function(data, type, row) {
+                                        return `<button class="btn btn-info btn-sm" onclick="editExpense(${row.id})">Edit</button>`;
+                                    }
+                                }
+                            ]
+                        });
+                    } else {
+                        // If no records, display a message
+                        $('#expensesTable').html('<tr><td colspan="5" class="text-center">No records found</td></tr>');
+                    }
+                },
+                error: function() {
+                    $('#expensesTable').html('<tr><td colspan="5" class="text-center">Error fetching data</td></tr>');
+                }
+            });
+
+            // Fetch Categories for Add Expense
+            $.ajax({
+                url: '/api/categories', // API to fetch categories
+                method: 'GET',
+                success: function(data) {
+                    var categoriesDropdown = $('#category');
+                    categoriesDropdown.empty();
+                    categoriesDropdown.append('<option value="">Select Category</option>');
+                    data.forEach(function(category) {
+                        categoriesDropdown.append(`<option value="${category.id}">${category.name}</option>`);
+                    });
+                }
+            });
+
+            // Handle form submission for Add Expense
+            $('#addExpenseForm').submit(function(e) {
+                e.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: '/api/expenses', // API to add expense
+                    method: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        $('#addExpenseModal').modal('hide');
+                        // Reload the table to show the newly added expense
+                        location.reload(); // Reload the page or manually refresh the DataTable
+                    },
+                    error: function() {
+                        alert('Error adding expense!');
+                    }
+                });
+            });
+        });
+
+        // Edit expense logic (not implemented yet)
+        function editExpense(expenseId) {
+            // Logic to edit an expense
+            alert('Edit Expense ' + expenseId);
+        }
+    </script>
+}

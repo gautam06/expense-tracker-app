@@ -1,0 +1,12 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to ExpenseTracker</h1>
+    <p>Track your expenses efficiently and effectively.</p>
+    <a class="btn btn-primary" asp-page="/Expenses">View Expenses</a>
+    <a class="btn btn-secondary" asp-page="/AddExpense">Add New Expense</a>
+</div>

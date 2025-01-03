@@ -1,0 +1,75 @@
+@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Login - ExpenseTracker";
+}
+
+<!-- Link to Google Fonts for Roboto -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+
+<!-- Centered Container -->
+<div class="login-container">
+    <div class="card" style="width: 100%; max-width: 400px;">
+        <div class="card-body">
+            <h2 class="text-center card-title">Login</h2>
+
+            <!-- Display error message if exists -->
+            @if (Model.ErrorMessage != null)
+            {
+                <div class="alert alert-danger">
+                    @Model.ErrorMessage
+                </div>
+            }
+
+            <form method="post">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="Username" placeholder="Enter your username" required />
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="Password" placeholder="Enter your password" required />
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Styles for Centering, Placeholder Size, and Font -->
+<style>
+    /* Apply Roboto font-family */
+    body, .form-control, .btn {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    /* Center the form on the page */
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* Medium placeholder size */
+    .form-control::placeholder {
+        font-size: 1.125rem; /* 18px */
+    }
+
+    /* Adjust the card and form layout */
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+        padding: 2rem;
+    }
+
+    /* Button width adjustment */
+    .btn {
+        font-weight: 500;
+    }
+</style>
