@@ -144,4 +144,20 @@ public class ExpenseRepository : IExpenseRepository
             Description = e.Description
         }).ToListAsync();
     }
+    
+    public async Task<IEnumerable<ExpensesByCategoryDto>> GetExpensesByUserIdAsync(int userId)
+    {
+        return await _context.Expenses
+            .Where(e => e.UserId == userId)
+            .Join(_context.Categories,
+                expense => expense.CategoryId,
+                category => category.Id,
+                (expense, category) => new ExpensesByCategoryDto
+                {
+                    UserId = expense.UserId,
+                    CategoryName = category.Name,
+                    Amount = expense.Amount
+                })
+            .ToListAsync();
+    }
 }

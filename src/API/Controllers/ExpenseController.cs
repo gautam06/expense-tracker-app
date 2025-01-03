@@ -62,4 +62,18 @@ public class ExpensesController : ControllerBase
         var results = await _expenseService.ListAllExpensesAsync(query, userId);
         return Ok(results);
     }
+    
+    [HttpGet("ExpensesByCategory/{userId}")]
+    public async Task<ActionResult<Dictionary<string, decimal>>> GetTotalExpensesByCategory(int userId)
+    {
+        
+        //Added Invalid User Error
+        if (userId <= 0)
+        {
+            return BadRequest("Invalid userId.");
+        }
+        
+        var result = await _expenseService.GetTotalExpensesByCategoryAsync(userId);
+        return Ok(result);
+    }
 }
