@@ -36,4 +36,9 @@ public class ExpenseService : IExpenseService
     {
         return await _expenseRepository.DeleteExpenseAsync(id);
     }
+	
+	public async Task<IEnumerable<ExpenseDto>> ListAllExpensesAsync(ExpenseQueryModel query, int userId)
+    {
+        return await _expenseRepository.ListAllExpensesAsync(query, userId);
+    }
 }
