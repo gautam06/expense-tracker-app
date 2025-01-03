@@ -1,6 +1,7 @@
 ﻿using ExpenseTrackerAPI.Context;
 using ExpenseTrackerAPI.Dtos;
 using ExpenseTrackerAPI.Entities;
+using ExpenseTrackerAPI.Models.Request.ExpenseTrackerAPI.Models.Request;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExpenseTrackerAPI.Repository;

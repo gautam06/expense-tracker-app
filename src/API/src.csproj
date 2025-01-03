@@ -19,10 +19,4 @@
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Compile Remove="Services\ExpenseService.cs" />
-      <Compile Remove="Services\IExpenseService.cs" />
-      <Compile Remove="Controllers\ExpenseController.cs" />
-    </ItemGroup>
-
 </Project>

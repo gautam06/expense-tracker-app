@@ -16,13 +16,6 @@ public class ExpensesController : ControllerBase
         _expenseService = expenseService;
     }
 
-    [HttpGet("search")]
-    public async Task<ActionResult<IEnumerable<ExpenseDto>>> SearchExpenses([FromQuery] string query)
-    {
-        var results = await _expenseService.SearchExpensesAsync(query);
-        return Ok(results);
-    }
-
     [HttpPost]
     public async Task<ActionResult<ExpenseDto>> CreateExpense([FromBody] ExpenseDto expenseDto)
     {
