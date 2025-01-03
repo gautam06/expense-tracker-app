@@ -9,6 +9,7 @@ ExpenseTracker is a web application designed to help users manage their personal
 - [Setting Up the Database](#setting-up-the-database)
 - [Steps to Run the Application](#steps-to-run-the-application)
 - [Dependencies](#dependencies)
+- [UnitTestCases(#unittestcases)
 - [Swagger Documentation](#swagger-documentation)
 - [UI Images](#attaching-images-in-the-ui)
 - [Contributing](#contributing)
@@ -90,6 +91,12 @@ To install the packages, run:
 # Example
  dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 ```
+
+---
+
+## UnitTestCases
+### XUnit TestCases
+- Test cases have been written using XUnit for API Controllers. 
 
 ---
 
