@@ -118,20 +118,5 @@ Refer attached images of UI for reference.
 ![Expense Tracker Screenshot4](https://github.com/gautam06/expense-tracker-app/blob/main/WebApp/WebApp/wwwroot/ScreenShot/Login.png)
 ![Expense Tracker Screenshot5](https://github.com/gautam06/expense-tracker-app/blob/main/WebApp/WebApp/wwwroot/ScreenShot/SigninAPI.png)
 
---
-
-## Contributing
-
-We welcome contributions! Follow these steps:
-
-1. Fork the repository.
-2. Create a new branch: `git checkout -b feature/your-feature-name`.
-3. Commit changes: `git commit -m 'Add your message here'`.
-4. Push the branch: `git push origin feature/your-feature-name`.
-5. Submit a pull request.
-
 ---
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
