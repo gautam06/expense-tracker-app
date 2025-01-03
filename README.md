@@ -97,8 +97,7 @@ This application provides Swagger UI for exploring the API endpoints:
 
 1. **Enable Swagger**:
    Swagger is pre-configured in the application. Run the application and navigate to:
-   ``` http://localhost:5138/swagger/index.html
-   ```
+   ``` http://localhost:5138/swagger/index.html ```
 
 2. **Usage**:
    - Use the Swagger interface to test all REST API endpoints interactively.
