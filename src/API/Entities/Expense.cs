@@ -15,6 +15,8 @@ public partial class Expense
     public int? CreatedBy { get; set; }
 
     public int? UpdatedBy { get; set; }
+    
+    public DateTime ExpenseDate { get; set; }
 
     public DateTime CreatedAt { get; set; }
 

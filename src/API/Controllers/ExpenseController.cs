@@ -1,6 +1,7 @@
 ﻿using ExpenseTrackerAPI.Dtos;
 using ExpenseTrackerAPI.Services;
 using Microsoft.AspNetCore.Mvc;
+using ExpenseTrackerAPI.Models.Request.ExpenseTrackerAPI.Models.Request;
 
 namespace ExpenseTrackerAPI.Controllers;
 
@@ -15,10 +16,10 @@ public class ExpensesController : ControllerBase
         _expenseService = expenseService;
     }
 
-    [HttpGet("search")]
-    public async Task<ActionResult<IEnumerable<ExpenseDto>>> SearchExpenses([FromQuery] string query)
+    [HttpGet("list")]
+    public async Task<ActionResult<IEnumerable<ExpenseDto>>> ListAllExpenses([FromQuery] ExpenseQueryModel query, int userId)
     {
-        var results = await _expenseService.SearchExpensesAsync(query);
+        var results = await _expenseService.ListAllExpensesAsync(query, userId);
         return Ok(results);
     }
 }
